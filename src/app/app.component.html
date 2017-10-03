@@ -1,3 +1,47 @@
-<h1>
-  {{title}}
-</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularPatientHost</title>
+</head>
+<h2>CSC 436 Assignment 3</h2>
+<h2>Angular Patient Search</h2>
+<h3>Jay Pan</h3>
+<h4>The patients shown below are from DC Comic's Arkham Asylum.</h4>
+<h4>Arkham Asylum serves as a psychiatric hospital for the Gotham City area, housing patients who are criminally insane.</h4>
+<h4>Enter "first" along with the patient's first name.</h4>
+<h4>You can also enter "last" along with the patient's last name.</h4>
+<h4>In addition, you can enter "email" along with the patient's email address.</h4>
+<h4>Finally, you can enter "doctor" along with the doctor's last name.</h4>
+<body>
+<app-search-text [(searchText)]="searchText"></app-search-text>
+<input style="height:30px;width:100px" type="text" [(ngModel)]="searchText" placeholder="Search: " />
+<button style="height:30px;width:80px" (click)="search()">Search</button>
+<button style="height:30px;width:80px" (click)="refresh()">Refresh</button>
+<style>
+  table, th, td 
+  {
+    border: 1px solid black;
+  }
+</style>
+<table>
+  <thead>
+    <tr>
+      <th>Profile Image</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email Address</th> 
+      <th>Doctor Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of displayedPatients">
+      <td> <img height="120px" width="120px" src="{{ patient.profileImage }}" /> </td>
+      <td>{{ patient.firstName }}</td>
+      <td>{{ patient.lastName }}</td>
+      <td>{{ patient.emailAddress }}</td>
+      <td>{{ patient.doctorName }}</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
